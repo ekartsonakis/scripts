@@ -1,0 +1,1 @@
+This script is ready to be used as an ansible template. You can copy it to your hosts and use a monit config like nagios.monit (copy it under /etc/monit.d/) to send your monit check results to your slack channel

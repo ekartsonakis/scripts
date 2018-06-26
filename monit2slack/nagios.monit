@@ -1,0 +1,17 @@
+check process httpd with pidfile /var/run/httpd/httpd.pid
+        if does not exist then exec "/bin/bash -c '/usr/local/bin/slack.sh; systemctl start httpd'"
+        else if succeeded 2 times within 2 cycles then exec "/usr/local/bin/slack.sh"
+        start program = "systemctl start httpd"
+        stop  program = "systemctl start httpd"
+
+check process docker with pidfile /var/run/docker.pid
+        if does not exist then exec "/bin/bash -c '/usr/local/bin/slack.sh; systemctl start docker'"
+        else if succeeded 2 times within 2 cycles then exec "/usr/local/bin/slack.sh"
+        start program = "systemctl start docker"
+        stop  program = "systemctl start docker"
+
+check process nagiosmon with pidfile /var/run/nagios/nagios.pid
+        if does not exist then exec "/bin/bash -c '/usr/local/bin/slack.sh; systemctl start nagios'"
+        else if succeeded 2 times within 2 cycles then exec "/usr/local/bin/slack.sh"
+        start program = "systemctl start nagios"
+        stop  program = "systemctl start nagios"
